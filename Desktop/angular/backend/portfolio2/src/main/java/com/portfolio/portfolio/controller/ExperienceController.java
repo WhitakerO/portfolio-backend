@@ -1,9 +1,6 @@
-
-
 package com.portfolio.portfolio.controller;
 
-import com.portfolio.portfolio.model.Educacion;
-import com.portfolio.portfolio.service.EducacionService;
+import com.portfolio.portfolio.model.Experience;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,26 +11,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.portfolio.portfolio.service.ExperienceService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/api/educacion")
-public class EducacionControlador {
+@RequestMapping("/api/explaboral")
+public class ExperienceController {
     @Autowired
-    private EducacionService educacionService;
+    private ExperienceService experienceService;
     
     
-    public ResponseEntity<?> create (@RequestBody Educacion id) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(educacionService.save(id));
+    public ResponseEntity<?> create (@RequestBody Experience id) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(experienceService.save(id));
     }
     
     @GetMapping("/obtener")
-    public Iterable<Educacion>listar(){
-        return educacionService.findAll();
+    public Iterable<Experience>list(){
+        return experienceService.findAll();
     }
     @PostMapping("/eliminar/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id){
-        String resp = educacionService.deleteById(id);
+        String resp = experienceService.deleteById(id);
         if("OK".equalsIgnoreCase(resp)){
             return new ResponseEntity<>(resp, HttpStatus.NO_CONTENT);
         }else{
@@ -41,7 +39,8 @@ public class EducacionControlador {
         }
     }
     @PostMapping("/agregar")
-    public Educacion guardar(@RequestBody Educacion exp){
-       return educacionService.save(exp);
+    public Experience save(@RequestBody Experience exp){
+       return experienceService.save(exp);
     }
+    
 }

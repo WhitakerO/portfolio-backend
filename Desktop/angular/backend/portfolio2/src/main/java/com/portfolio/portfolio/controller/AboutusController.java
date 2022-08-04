@@ -1,7 +1,6 @@
 package com.portfolio.portfolio.controller;
 
 import com.portfolio.portfolio.model.AboutUs;
-import com.portfolio.portfolio.model.Educacion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,19 +18,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequestMapping("/api/acercade")
 public class AboutusController {
     @Autowired
-    private AboutusService acercadeService;
+    private AboutusService aboutusService;
     
     
     public ResponseEntity<?> create (@RequestBody AboutUs id) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(acercadeService.save(id));
+        return ResponseEntity.status(HttpStatus.CREATED).body(aboutusService.save(id));
     }
     
     @GetMapping("/obtener/{id}")
     public AboutUs get(@PathVariable Long id){
-        return acercadeService.findById(id);
+        return aboutusService.findById(id);
     }
     @PostMapping("/guardar")
     public AboutUs save(@RequestBody AboutUs abt){
-       return acercadeService.save(abt);
+       return aboutusService.save(abt);
     }
 }

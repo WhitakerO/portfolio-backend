@@ -4,8 +4,7 @@
  */
 package com.portfolio.portfolio.controller;
 
-import com.portfolio.portfolio.model.Habilidad;
-import com.portfolio.portfolio.service.HabilidadService;
+import com.portfolio.portfolio.model.Skill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,26 +15,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.portfolio.portfolio.service.SkillService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/habilidad")
-public class HabilidadControlador {
+public class SkillController {
     @Autowired
-    private HabilidadService habilidadService;
+    private SkillService skillService;
     
     
-    public ResponseEntity<?> create (@RequestBody Habilidad id) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(habilidadService.save(id));
+    public ResponseEntity<?> create (@RequestBody Skill id) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(skillService.save(id));
     }
     
     @GetMapping("/obtener")
-    public Iterable<Habilidad>listar(){
-        return habilidadService.findAll();
+    public Iterable<Skill>lista(){
+        return skillService.findAll();
     }
     @PostMapping("/eliminar/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id){
-        String resp = habilidadService.deleteById(id);
+        String resp = skillService.deleteById(id);
         if("OK".equalsIgnoreCase(resp)){
             return new ResponseEntity<>(resp, HttpStatus.NO_CONTENT);
         }else{
@@ -43,8 +43,8 @@ public class HabilidadControlador {
         }
     }
     @PostMapping("/agregar")
-    public Habilidad guardar(@RequestBody Habilidad exp){
-       return habilidadService.save(exp);
+    public Skill save(@RequestBody Skill skill){
+       return skillService.save(skill);
     }
     
 }

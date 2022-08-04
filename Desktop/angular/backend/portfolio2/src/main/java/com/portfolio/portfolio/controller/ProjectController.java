@@ -1,7 +1,10 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.portfolio.portfolio.controller;
 
-import com.portfolio.portfolio.model.ExpLaboral;
-import com.portfolio.portfolio.service.ExpLaboralService;
+import com.portfolio.portfolio.model.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,26 +15,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.portfolio.portfolio.service.ProjectService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/api/explaboral")
-public class ExpLaboralControlador {
+@RequestMapping("/api/proyecto")
+public class ProjectController {
     @Autowired
-    private ExpLaboralService expLaboralService;
+    private ProjectService projectService;
     
     
-    public ResponseEntity<?> create (@RequestBody ExpLaboral id) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(expLaboralService.save(id));
+    public ResponseEntity<?> create (@RequestBody Project id) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(projectService.save(id));
     }
     
     @GetMapping("/obtener")
-    public Iterable<ExpLaboral>listar(){
-        return expLaboralService.findAll();
+    public Iterable<Project>list(){
+        return projectService.findAll();
     }
     @PostMapping("/eliminar/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id){
-        String resp = expLaboralService.deleteById(id);
+        String resp = projectService.deleteById(id);
         if("OK".equalsIgnoreCase(resp)){
             return new ResponseEntity<>(resp, HttpStatus.NO_CONTENT);
         }else{
@@ -39,8 +43,8 @@ public class ExpLaboralControlador {
         }
     }
     @PostMapping("/agregar")
-    public ExpLaboral guardar(@RequestBody ExpLaboral exp){
-       return expLaboralService.save(exp);
+    public Project save(@RequestBody Project project){
+       return projectService.save(project);
     }
     
 }

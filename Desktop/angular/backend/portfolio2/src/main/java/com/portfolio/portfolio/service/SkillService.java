@@ -4,18 +4,18 @@
  */
 package com.portfolio.portfolio.service;
 
-import com.portfolio.portfolio.model.Habilidad;
+import com.portfolio.portfolio.model.Skill;
 
 /**
  *
  * @author whita
  */
-public interface HabilidadService {
-    public Iterable<Habilidad> findAll();
+public interface SkillService {
+    public Iterable<Skill> findAll();
     
-    public Habilidad save (Habilidad id);
+    public Skill save (Skill id);
     
-    public Habilidad findById (Long id);
+    public Skill findById (Long id);
     
     public String deleteById (Long id);
 }

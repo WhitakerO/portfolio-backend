@@ -4,19 +4,19 @@
  */
 package com.portfolio.portfolio.service;
 
-import com.portfolio.portfolio.model.Educacion;
+import com.portfolio.portfolio.model.Education;
 
 /**
  *
  * @author whita
  */
-public interface EducacionService {
+public interface EducationService {
     
-    public Iterable<Educacion> findAll();
+    public Iterable<Education> findAll();
     
-    public Educacion save (Educacion id);
+    public Education save (Education id);
     
-    public Educacion findById (Long id);
+    public Education findById (Long id);
     
     public String deleteById (Long id);
     

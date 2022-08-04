@@ -10,16 +10,16 @@ import com.portfolio.portfolio.repository.AboutusRepository;
 public class AboutusServiceImpl implements AboutusService {
     
     @Autowired
-    private AboutusRepository acercadeRepository;
+    private AboutusRepository aboutusRepository;
 
     @Override
     public AboutUs save(AboutUs id) {
-        return acercadeRepository.save(id);
+        return aboutusRepository.save(id);
     }
     
     @Override
     public AboutUs findById(Long id) {
-        return acercadeRepository.findById(id).orElse(null);
+        return aboutusRepository.findById(id).orElse(null);
     }
     
 }
