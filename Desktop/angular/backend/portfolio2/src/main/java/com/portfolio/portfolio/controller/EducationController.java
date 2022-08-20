@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.portfolio.portfolio.service.EducationService;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -40,8 +41,14 @@ public class EducationController {
             return new ResponseEntity<>(resp, HttpStatus.NOT_FOUND);
         }
     }
+    
     @PostMapping("/agregar")
-    public Education save(@RequestBody Education exp){
-       return educationService.save(exp);
+    public Education add(@RequestBody Education education){
+       return educationService.save(education);
+    }
+    
+    @PutMapping("/guardar")
+    public Education save(@RequestBody Education education){
+       return educationService.save(education);
     }
 }

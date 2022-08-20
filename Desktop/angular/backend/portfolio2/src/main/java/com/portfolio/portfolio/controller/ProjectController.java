@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.portfolio.portfolio.service.ProjectService;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -43,6 +44,11 @@ public class ProjectController {
         }
     }
     @PostMapping("/agregar")
+    public Project add(@RequestBody Project project){
+       return projectService.save(project);
+    }
+    
+    @PutMapping("/guardar")
     public Project save(@RequestBody Project project){
        return projectService.save(project);
     }

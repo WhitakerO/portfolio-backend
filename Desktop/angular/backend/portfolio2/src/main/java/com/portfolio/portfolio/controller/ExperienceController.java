@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.portfolio.portfolio.service.ExperienceService;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -39,6 +40,11 @@ public class ExperienceController {
         }
     }
     @PostMapping("/agregar")
+    public Experience add(@RequestBody Experience exp){
+       return experienceService.save(exp);
+    }
+    
+    @PutMapping("/guardar")
     public Experience save(@RequestBody Experience exp){
        return experienceService.save(exp);
     }
