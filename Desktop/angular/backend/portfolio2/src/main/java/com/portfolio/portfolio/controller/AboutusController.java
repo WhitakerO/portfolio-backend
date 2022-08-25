@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
-@CrossOrigin()
 @RequestMapping("/api/acercade")
 public class AboutusController {
     @Autowired

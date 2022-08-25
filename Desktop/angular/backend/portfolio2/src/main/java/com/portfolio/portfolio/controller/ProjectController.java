@@ -19,7 +19,6 @@ import com.portfolio.portfolio.service.ProjectService;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
-@CrossOrigin()
 @RequestMapping("/api/proyecto")
 public class ProjectController {
     @Autowired
