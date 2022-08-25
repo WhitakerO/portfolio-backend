@@ -17,7 +17,7 @@ import com.portfolio.portfolio.service.EducationService;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin()
 @RequestMapping("/api/educacion")
 public class EducationController {
     @Autowired

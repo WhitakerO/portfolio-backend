@@ -19,7 +19,7 @@ import com.portfolio.portfolio.service.SkillService;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin()
 @RequestMapping("/api/habilidad")
 public class SkillController {
     @Autowired
