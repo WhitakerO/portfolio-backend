@@ -31,7 +31,7 @@ public class AboutusController {
         return aboutusService.findById(id);
     }
     
-    @PostMapping("/guardar")
+    @PostMapping("/agregar")
     public AboutUs add(@RequestBody AboutUs abt){
        return aboutusService.save(abt);
     }
