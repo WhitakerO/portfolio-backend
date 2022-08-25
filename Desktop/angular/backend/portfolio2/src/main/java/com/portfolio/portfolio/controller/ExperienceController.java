@@ -15,7 +15,7 @@ import com.portfolio.portfolio.service.ExperienceService;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
-@CrossOrigin(origins = "https://portfolio-611ec.web.app")
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/explaboral")
 public class ExperienceController {
     @Autowired

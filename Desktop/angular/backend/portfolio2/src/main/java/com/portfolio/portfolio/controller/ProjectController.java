@@ -19,7 +19,7 @@ import com.portfolio.portfolio.service.ProjectService;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
-@CrossOrigin(origins = "https://portfolio-611ec.web.app")
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/proyecto")
 public class ProjectController {
     @Autowired
