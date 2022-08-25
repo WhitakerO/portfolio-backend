@@ -11,7 +11,7 @@ public class Experience {
     private Long id;
     @Column(name = "title")
     private String title;
-    @Column(name = "description")
+    @Column(name = "description", length=420)
     private String description;
     @Column(name = "image")
     private String image;
