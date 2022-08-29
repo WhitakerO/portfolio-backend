@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.portfolio.portfolio.service.ExperienceService;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
@@ -30,7 +31,7 @@ public class ExperienceController {
     public Iterable<Experience>list(){
         return experienceService.findAll();
     }
-    @PostMapping("/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id){
         String resp = experienceService.deleteById(id);
         if("OK".equalsIgnoreCase(resp)){
