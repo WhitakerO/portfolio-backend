@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.portfolio.portfolio.service.ExperienceService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -19,18 +20,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/explaboral")
 public class ExperienceController {
+    
     @Autowired
     private ExperienceService experienceService;
-    
-    
-    public ResponseEntity<?> create (@RequestBody Experience id) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(experienceService.save(id));
-    }
     
     @GetMapping("/obtener")
     public Iterable<Experience>list(){
         return experienceService.findAll();
     }
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id){
         String resp = experienceService.deleteById(id);
@@ -40,11 +39,14 @@ public class ExperienceController {
             return new ResponseEntity<>(resp, HttpStatus.NOT_FOUND);
         }
     }
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar")
     public Experience add(@RequestBody Experience exp){
        return experienceService.save(exp);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/guardar")
     public Experience save(@RequestBody Experience exp){
        return experienceService.save(exp);

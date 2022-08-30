@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.portfolio.portfolio.service.EducationService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -21,19 +22,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/educacion")
 public class EducationController {
+    
     @Autowired
     private EducationService educationService;
-    
-    
-    public ResponseEntity<?> create (@RequestBody Education id) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(educationService.save(id));
-    }
     
     @GetMapping("/obtener")
     public Iterable<Education>list(){
         return educationService.findAll();
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id){
         String resp = educationService.deleteById(id);
@@ -44,11 +42,13 @@ public class EducationController {
         }
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar")
     public Education add(@RequestBody Education education){
        return educationService.save(education);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/guardar")
     public Education save(@RequestBody Education education){
        return educationService.save(education);

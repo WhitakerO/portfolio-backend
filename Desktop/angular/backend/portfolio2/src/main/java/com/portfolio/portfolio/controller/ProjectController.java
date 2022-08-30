@@ -16,25 +16,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.portfolio.portfolio.service.ProjectService;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/proyecto")
 public class ProjectController {
+    
     @Autowired
     private ProjectService projectService;
-    
-    
-    public ResponseEntity<?> create (@RequestBody Project id) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(projectService.save(id));
-    }
     
     @GetMapping("/obtener")
     public Iterable<Project>list(){
         return projectService.findAll();
     }
-    @PostMapping("/eliminar/{id}")
+    
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id){
         String resp = projectService.deleteById(id);
         if("OK".equalsIgnoreCase(resp)){
@@ -43,11 +43,14 @@ public class ProjectController {
             return new ResponseEntity<>(resp, HttpStatus.NOT_FOUND);
         }
     }
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar")
     public Project add(@RequestBody Project project){
        return projectService.save(project);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/guardar")
     public Project save(@RequestBody Project project){
        return projectService.save(project);

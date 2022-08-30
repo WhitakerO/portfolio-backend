@@ -16,25 +16,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.portfolio.portfolio.service.SkillService;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/habilidad")
 public class SkillController {
+    
     @Autowired
     private SkillService skillService;
-    
-    
-    public ResponseEntity<?> create (@RequestBody Skill id) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(skillService.save(id));
-    }
     
     @GetMapping("/obtener")
     public Iterable<Skill>lista(){
         return skillService.findAll();
     }
-    @PostMapping("/eliminar/{id}")
+    
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id){
         String resp = skillService.deleteById(id);
         if("OK".equalsIgnoreCase(resp)){
@@ -43,11 +43,14 @@ public class SkillController {
             return new ResponseEntity<>(resp, HttpStatus.NOT_FOUND);
         }
     }
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar")
     public Skill add(@RequestBody Skill skill){
        return skillService.save(skill);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/guardar")
     public Skill save(@RequestBody Skill skill){
        return skillService.save(skill);

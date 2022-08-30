@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.portfolio.portfolio.service.AboutusService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -18,24 +19,22 @@ import org.springframework.web.bind.annotation.PutMapping;
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/acercade")
 public class AboutusController {
+    
     @Autowired
     private AboutusService aboutusService;
-    
-    
-    public ResponseEntity<?> create (@RequestBody AboutUs id) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(aboutusService.save(id));
-    }
     
     @GetMapping("/obtener/{id}")
     public AboutUs get(@PathVariable Long id){
         return aboutusService.findById(id);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/agregar")
     public AboutUs add(@RequestBody AboutUs abt){
        return aboutusService.save(abt);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/guardar")
     public AboutUs save(@RequestBody AboutUs abt){
        return aboutusService.save(abt);
