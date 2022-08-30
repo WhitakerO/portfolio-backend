@@ -49,4 +49,15 @@ La línea de código a modificar es:
 ```
 @CrossOrigin(origins = "*")
 ```
-En lugar del *****, se deberá colocar el link del frontend, que es de donde se enviarán las peticiones HTTP.
+En lugar del "*", se deberá colocar el link del frontend, que es de donde se enviarán las peticiones HTTP.
+
+Una vez realizados todos los pasos, ya se puede buildear y poner en producción.
+
+## Bugs conocidos
+
+- Por el momento no se ha reportado algún bug.
+
+## Actualizaciones pendientes
+
+- Especificar **lenght** en las tablas que requieran 
+- Crear un sistema de registro de usuarios
