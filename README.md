@@ -31,4 +31,22 @@ Los cuales se encuentran divididos en cada paquete de Java de forma ordenada par
 
 ## Instalación
 
-Una vez clonado este repositorio, deberás modificar los siguientes archivos:
+Una vez clonado este repositorio, deberás modificar el archivo **application.properties** con los datos de la base de datos que usaremos:
+```
+spring.datasource.url= URL DE LA DB
+spring.datasource.username= USUARIO
+spring.datasource.password= PASSWORD
+```
+Realizado este paso, podemos configurar el CORS, el cuál por defecto está para cualquier origen. Los archivos que se deberían modifcar son:
+```
+AboutusController  
+ExperienceController  
+ProjectController  
+SkillController  
+AuthController
+```
+La línea de código a modificar es:
+```
+@CrossOrigin(origins = "*")
+```
+En lugar del *****, se deberá colocar el link del frontend, que es de donde se enviarán las peticiones HTTP.
