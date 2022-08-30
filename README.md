@@ -1,6 +1,6 @@
 # Proyecto de Portfolio: Backend
 
-**Link frontend:**
+**Link frontend: https://github.com/WhitakerO/portfolio-frontend**
 
 El siguiente proyecto corresponde al backend de un Portfolio personal. Está hecho con Spring Boot (Java) siguiendo los
 lineamientos y condiciones del programa nacional Argentina Programa, llevado a cabo por el INTI (Instituto Nacional de Tecnología Industrial).
