@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = {
+    "https://portfolio-611ec.web.app/",
+    "http://localhost:4200/"
+})
 @RequestMapping("/api/acercade")
 public class AboutusController {
     
