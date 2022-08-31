@@ -21,12 +21,9 @@ public class AboutUs {
     @Column(name = "avatarimg")
     private String avatarimg;
     
-    @Column(name = "carouselimg1")
-    private String carouselimg1;
-    
-    @Column(name = "carouselimg2")
-    private String carouselimg2;
-    
+    @Column(name = "backgroundimage")
+    private String backgroundimage;
+
     @Column(name = "age")
     private int age;
     
@@ -104,20 +101,12 @@ public class AboutUs {
         this.avatarimg = avatarimg;
     }
 
-    public String getCarouselimg1() {
-        return carouselimg1;
+    public String getBackgroundimage() {
+        return backgroundimage;
     }
 
-    public void setCarouselimg1(String carouselimg1) {
-        this.carouselimg1 = carouselimg1;
-    }
-
-    public String getCarouselimg2() {
-        return carouselimg2;
-    }
-
-    public void setCarouselimg2(String carouselimg2) {
-        this.carouselimg2 = carouselimg2;
+    public void setBackgroundimage(String backgroundimage) {
+        this.backgroundimage = backgroundimage;
     }
 
     public int getAge() {
