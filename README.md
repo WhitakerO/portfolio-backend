@@ -51,7 +51,9 @@ La línea de código a modificar es:
 ```
 En lugar del "*", se deberá colocar el link del frontend, que es de donde se enviarán las peticiones HTTP.
 
-Una vez realizados todos los pasos, ya se puede buildear y poner en producción.
+Una vez creada la base de datos, importar el archivo **data.sql** que se encuentra dentro del proyecto.
+
+Realizados todos los pasos, ya se puede buildear y poner en producción.
 
 ## Bugs conocidos
 
